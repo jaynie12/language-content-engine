@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 from collections import deque
 #https://scrape.do/blog/web-crawler-python/
+import robotsTxt
 
 class WebCrawler:    
     def __init__(self, base_url, max_pages=100):
@@ -48,25 +49,12 @@ class WebCrawler:
             ".svg", ".zip", ".rar", ".mp4", ".mp3", ".ico"
         )
         return url.lower().endswith(skip_extensions)
+    
+    def is_french_content(html):
+        soup = BeautifulSoup(html, "html.parser")
+        text = soup.get_text().lower()
+        french_keywords = ["le", "la", "et", "est", "un", "une", "de", "des", "en", "pour"]
+        return any(keyword in text for keyword in french_keywords)
 
-
-
-    def crawl(seed_url, max_pages=10):
-        visited = set()
-        queue = deque([seed_url])
-
-        while queue and len(visited) < max_pages:
-            url = queue.popleft()
-            if url in visited or should_skip_url(url):
-                continue
-
-            print(f"Crawling: {url}")
-            html = fetch(url)
-            if not html:
-                continue
-
-            links = extract_links(html, url)
-            queue.extend(links - visited)
-            visited.add(url)
-        
-        //
+    def robots_allowed(url):
+        return robotsTxt.robotsTxt.is_allowed(url, user_agent="MyCrawler", fallback=True)

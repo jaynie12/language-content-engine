@@ -19,4 +19,5 @@ class robotsTxt:
         except:
             print(f"[robots.txt not accessible] Proceeding with: {url}")
             return fallback
-        #test
+    
+    
