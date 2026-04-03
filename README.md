@@ -10,7 +10,7 @@ After obtaining a transcript from a Youtube Video, an LLM will analyse the text 
 - **Database:** PostgreSQL
 - **Cache:** Redis
 - **Queue:** Celery + Redis
-- **AI:** OpenAI API or Anthropic Claude API
+- **AI:** Anthropic Claude API
 - **YouTube:** youtube-transcript-api, google-api-python-client
 
 ### Frontend Stack:
@@ -23,8 +23,8 @@ After obtaining a transcript from a Youtube Video, an LLM will analyse the text 
 
 ### Infrastructure:
 
-- **Backend Hosting:** Railway or Render
+- **Backend Hosting:** Railway
 - **Frontend Hosting:** Vercel
 - **Database:** Railway PostgreSQL
-- **Redis:** Railway Redis or Upstash
+- **Redis:** Railway Redis
 - **File Storage:** S3
