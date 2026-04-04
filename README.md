@@ -37,7 +37,7 @@ python main.py
 
 Backend runs on `http://localhost:8000`
 
-### Frontend (Coming Day 8)
+### Frontend 
 ```bash
 cd frontend
 npm install
