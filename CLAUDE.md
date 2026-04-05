@@ -308,5 +308,5 @@ french-learning-app/
 
 ---
 
-**Last updated:** Day 1, April 2026  
-**Next review:** Day 7 (end of Week 1)
+**Last updated:** 4th April 2026
+**Next review:** 11th April 2025
