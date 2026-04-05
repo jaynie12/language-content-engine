@@ -44,7 +44,11 @@ For each word, return:
 - translation: English translation
 - cefr_level: A1, A2, B1, B2, C1, or C2
 - frequency: "very common" (appears 5+ times), "common" (2-4 times), "once" (appears once but important)
-- example_sentence: Exact sentence from the transcript containing this word
+- example_sentence: Exact sentence from the transcript containing this word or a short excerpt if the sentence is over 20 words.e
+- If its a noun, also include the gender (masculine/feminine)
+- If its a verb, also include the infinitive form
+- If its an adjective, also include the comparative and superlative forms
+- The JSON should be an array of objects, one for each word.
 
 Return ONLY valid JSON array, no markdown or extra text."""
 
@@ -55,8 +59,9 @@ Given a French transcript, identify 3-5 main topics or themes discussed.
 
 Rules:
 - Topics should be general (e.g., "cooking", "travel", "science") not specific details
-- Base on content, not length
+- Base on content, not length, not just keywords, but overall themes
 - Return as simple array of strings
+- Topics should be in French
 
 Return ONLY valid JSON array of strings, no markdown or extra text."""
 

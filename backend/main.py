@@ -20,9 +20,8 @@ async def lifespan(app: FastAPI):
     """Startup and shutdown events"""
     # Startup
     logger.info("Starting French Learning App...")
-    init_db()  # Create tables if they don't exist
+    init_db() 
     yield
-    # Shutdown
     logger.info("Shutting down French Learning App...")
 
 
