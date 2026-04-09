@@ -8,6 +8,7 @@ from typing import Optional
 from youtube_transcript_api import YouTubeTranscriptApi
 import httpx
 import logging
+import asyncio
 
 logger = logging.getLogger(__name__)
 
@@ -45,17 +46,20 @@ def get_transcript(video_id: str) -> str:
     try:
         # Try to get French transcript first
         try:
-            transcript_list = YouTubeTranscriptApi.get_transcript(video_id, languages=['fr'])
-            logger.info(f"Fetched French transcript for {video_id}")
+           transcript_list = YouTubeTranscriptApi().fetch(video_id, languages=["fr"])
+           logger.info(f"Fetched French transcript for {video_id}")
+           logger.info(f"Transcript parts: {len(transcript_list)}")
+
         except Exception as e:
             logger.warning(f"French transcript not available, trying English: {e}")
-            # Fall back to English
-            transcript_list = YouTubeTranscriptApi.get_transcript(video_id, languages=['en'])
+            # Fall back to 
+            transcript_list =YouTubeTranscriptApi().fetch(
+            video_id, languages=["en"])
             logger.info(f"Fetched English transcript for {video_id}")
         
         # Combine all transcript parts into single string
-        transcript = ' '.join([item['text'] for item in transcript_list])
-        return transcript
+        #transcript = ' '.join([item['text'] for item in transcript_list])
+        #return transcript
         
     except Exception as e:
         logger.error(f"Failed to fetch transcript for {video_id}: {e}")
@@ -118,3 +122,10 @@ async def fetch_and_validate_transcript(url: str) -> dict:
     except Exception as e:
         logger.error(f"Error fetching transcript for {url}: {e}")
         raise
+
+if __name__ == "__main__":
+    # Simple test
+    test_url = "https://www.youtube.com/watch?v=0E95x66B6cE"
+    #result = asyncio.run(fetch_and_validate_transcript(test_url))
+    result = get_transcript(extract_youtube_id(test_url))
+    print(result)
