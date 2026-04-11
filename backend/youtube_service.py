@@ -46,7 +46,7 @@ def get_transcript(video_id: str) -> str:
     try:
         # Try to get French transcript first
         try:
-           transcript_list = YouTubeTranscriptApi().fetch(video_id, languages=["fr"])
+           transcript_list = YouTubeTranscriptApi().fetch(video_id, languages=["fr"]).to_raw_data()
            logger.info(f"Fetched French transcript for {video_id}")
            logger.info(f"Transcript parts: {len(transcript_list)}")
 
