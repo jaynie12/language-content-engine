@@ -76,7 +76,6 @@ videos
   id (PK)
   youtube_id (UNIQUE)
   title
-  transcript (TEXT)
   analyzed_at
   cefr_level
   confidence
