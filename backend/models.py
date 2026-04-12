@@ -25,7 +25,6 @@ class Video(Base):
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     youtube_id = Column(String(255), unique=True, nullable=False)
     title = Column(String(500), nullable=False)
-    transcript = Column(Text, nullable=False)
     cefr_level = Column(String(3), nullable=True)  # A1, A2, B1, B2, C1, C2
     confidence = Column(Float, nullable=True)  # 0.0 - 1.0
     topics = Column(JSON, nullable=True)  # List of strings
