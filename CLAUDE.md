@@ -26,18 +26,17 @@
 - **State:** React Query (for server state sync)
 - **Routing:** React Router v6
 
-### Infrastructure (Deployment Day 22+)
+### Infrastructure for Deployment
 - **Backend:** Railway or Render
 - **Frontend:** Vercel
 - **Database:** Railway PostgreSQL
 - **Cache/Queue:** Railway Redis or Upstash
-- **Files:** S3 (for exports, later)
-
+- **Files:** S3 (for exports, later
 ---
 
 ## Architecture
 
-### API Endpoints (MVP)
+### API Endpoints
 ```
 POST /api/analyze
   Input: { url: "https://youtube.com/..." }
@@ -113,13 +112,13 @@ user_vocabulary
   5. Batch requests when possible
 - **Monitoring (Day 24):** Track tokens/cost per request, log to identify waste
 
-### Small Test Group (Myself + Teacher)
+### Small Test Group 
 - **No user auth Day 1-7.** Add single-user mode first.
 - **Day 14+:** Add basic auth (email-only for now, no password complexity).
 - **Feedback loop:** Teacher reviews output → I adjust prompts → iterate.
 - **Metrics:** Accuracy of CEFR assignment, vocabulary relevance, false positives in extraction.
 
-### Prompt Engineering Rules (All Weeks)
+### Prompt Engineering Rules 
 1. **System prompt** = Define the role, constraints, output format
 2. **User prompt** = The actual transcript + analysis task
 3. **XML tags** = Wrap structured data (`<transcript>`, `<vocabulary>`, `<topics>`)
@@ -150,50 +149,6 @@ user_vocabulary
 ### Database Migrations
 - **Day 10:** Design schema
 - **Day 22+:** Add migration tool (Alembic for SQLAlchemy or raw SQL with version tracking)
-
----
-
-## Milestones
-
-### Week 1 (Days 1-7): Backend Pipeline
-- [DONE] Day 1: Project scaffold, first commit
-- [ ] Day 2: YouTube transcript extraction working (CLI test)
-- [ ] Day 3: First Claude API call, CLAUDE.md written
-- [ ] Day 4: CEFR analysis prompt, iterate 5 times
-- [ ] Day 5: Vocabulary extraction + prompt design with Claude's help
-- [ ] Day 6: Full pipeline end-to-end (transcript → Claude → CEFR + vocab + topics)
-- [ ] Day 7: Code review, README updated, push clean version
-
-### Week 2 (Days 8-14): Frontend + Database
-- [ ] Day 8: Basic React form + submit button
-- [ ] Day 9: Display results on page
-- [ ] Day 10: PostgreSQL schema designed, migrations written
-- [ ] Day 11: Full loop: paste URL → process → store → display
-- [ ] Day 12: Save vocabulary to user list (backend)
-- [ ] Day 13: Saved words page + display
-- [ ] Day 14: Show to mentor, gather feedback, update CLAUDE.md
-
-### Week 3 (Days 15-21): Polish + Agents
-- [ ] Day 15: Anki export (CSV generation)
-- [ ] Day 16: Speaking speed indicator (from transcript timing)
-- [ ] Day 17: UI polish (clean, intentional design)
-- [ ] Day 18: Video detail page (full layout)
-- [ ] Day 19: Filter by CEFR level
-- [ ] Day 20: Error handling (missing transcripts, API failures, edge cases)
-- [ ] Day 21: Full code review, clean commit
-
-### Week 4 (Days 22-30): Ship + Document
-- [ ] Day 22: Deploy to Railway/Render
-- [ ] Day 23: Fix production issues
-- [ ] Day 24: Add monitoring & logging
-- [ ] Day 25: API documentation
-- [ ] Day 26: Demo video (2 min screen record)
-- [ ] Day 27: Substack post
-- [ ] Day 28: GitHub polish (readme, repo story)
-- [ ] Day 29: Show 3 people, gather feedback
-- [ ] Day 30: Reflect + plan May
-
----
 
 ## Key Files & Their Roles
 
@@ -240,72 +195,13 @@ french-learning-app/
 └── README.md                   # Project overview
 ```
 
----
-
-## Prompting Strategy for the Month
-
-### Days 1-3: Foundation
-- Give Claude your full stack + MVP spec
-- Ask it to scaffold folder structure, dependencies
-- Let it suggest database schema, ask for refinement
-
-### Days 4-6: Prompt Iteration
-- Write the CEFR analysis prompt → test → iterate 5 times
-- Each iteration: explain what's wrong, let Claude suggest fixes
-- Document all 5 versions in a `prompts/` folder
-
-### Days 7-14: Architecture Review
-- Ask Claude to review your codebase for structure, error handling
-- Ask it questions about your own code: "Why did you suggest X?"
-- Practice accepting/rejecting suggestions thoughtfully
-
-### Days 15-21: System-Level Thinking
-- Use Claude to design features before coding (video detail page, filtering)
-- Ask it: "What could break here?" (adversarial testing)
-- Use RAG thinking: "How would I query this data efficiently?"
-
-### Days 22-30: Production Thinking
-- "Help me debug this deployment error"
-- "What should I monitor in this system?"
-- "How would a senior engineer review this architecture?"
-
----
-
-## Success Criteria (April 30)
-
-1. **Live URL** — App accessible on the internet
-2. **Working pipeline** — Paste URL → get results → save → export
-3. **GitHub story** — Repo is clean, readme explains the build
-4. **Substack post** — Document what you built, why, what you learned
-5. **Interview-ready** — Can explain prompt engineering, Cursor usage, agent concepts with examples from this project
-6. **Cost-efficient** — Token costs tracked, wasteful patterns identified
-
----
 
 ## Constraints You Accepted
 
 - **Budget:** Minimal token spend (caching, truncation, batching)
 - **Users:** Just you + teacher (no scale needed)
-- **Time:** 30 days, 90 min build + 50 min learn daily
 - **Dependencies:** No third-party NLP libraries (use Claude for all language tasks)
 
----
-
-## What to Ask Claude Going Forward
-
-### Good prompts for this project:
-- "Here's my codebase. Review my [service name] for error handling."
-- "I'm about to build [feature]. What could go wrong? Think through failure modes first."
-- "Scaffold the [service/component] given this schema and my CLAUDE.md context."
-- "I have 5 prompt versions. Here they are. Why is #3 the best?"
-- "Help me design the database schema for [feature]. Ask me clarifying questions first."
-
-### Bad prompts (avoid):
-- "Build the whole app" (too vague)
-- "Write better code" (no context)
-- "Why doesn't this work?" (without error message + code)
-
----
 
 **Last updated:** 4th April 2026
 **Next review:** 11th April 2025

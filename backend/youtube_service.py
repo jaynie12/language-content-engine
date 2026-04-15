@@ -6,6 +6,8 @@ Handles fetching transcripts from YouTube URLs.
 import logging
 import re
 from typing import Any, Optional
+import asyncio
+
 
 import httpx
 from youtube_transcript_api import YouTubeTranscriptApi
@@ -127,5 +129,5 @@ async def fetch_and_validate_transcript(url: str) -> dict:
 
 if __name__ == "__main__":
     test_url = "https://www.youtube.com/watch?v=0E95x66B6cE"
-    result = get_transcript(extract_youtube_id(test_url))
+    result = asyncio.run(fetch_and_validate_transcript((test_url)))
     print(result)

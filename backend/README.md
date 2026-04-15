@@ -180,19 +180,8 @@ Full schema in `models.py`.
 
 ---
 
-## Deployment (Week 4)
+## Deployment
 
 See main project README for Railway/Render deployment steps.
 
 ---
-
-## Learning Progress
-
-- **Week 1** — Backend pipeline (this folder)
-- **Week 2** — Frontend integration + database finalization
-- **Week 3** — Feature polish (filters, exports, advanced features)
-- **Week 4** — Deployment + documentation
-
----
-
-**Next step:** Day 2 — Test YouTube transcript extraction in the CLI.
