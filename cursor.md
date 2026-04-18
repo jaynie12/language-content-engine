@@ -137,7 +137,7 @@ user_vocabulary
 - **Logging:** Structured logging with context (user_id, video_id, tokens_used)
 - **Async:** Use `async`/`await` for I/O (database, API calls, Redis)
 - **Environment:** `.env` for secrets; `python-dotenv` to load
-- **Testing:** Unit tests for prompt logic, integration tests for full pipeline (not Day 1, add Day 15+)
+- **Testing:** Unit tests for prompt logic, integration tests for full pipeline 
 
 ### React (Frontend)
 - **Components:** Functional, hooks-based, one component per file
@@ -146,61 +146,11 @@ user_vocabulary
 - **Errors:** Toast notifications for user feedback (use library like `sonner` or `react-hot-toast`)
 - **API calls:** Wrapped in React Query `useQuery` / `useMutation` hooks
 
-### Database Migrations
-- **Day 10:** Design schema
-- **Day 22+:** Add migration tool (Alembic for SQLAlchemy or raw SQL with version tracking)
 
 ## Key Files & Their Roles
 
-```
-french-learning-app/
-├── backend/
-│   ├── main.py                 # FastAPI app entry
-│   ├── config.py               # Settings, env vars
-│   ├── models.py               # SQLAlchemy ORM
-│   ├── schemas.py              # Pydantic request/response
-│   ├── database.py             # DB connection, session
-│   ├── services/
-│   │   ├── youtube_service.py  # Transcript fetching
-│   │   ├── claude_service.py   # Claude API calls (prompts here)
-│   │   └── vocabulary_service.py # Extraction logic
-│   ├── routes/
-│   │   ├── analyze.py          # POST /api/analyze
-│   │   ├── vocabulary.py       # Vocabulary endpoints
-│   │   └── videos.py           # Video history
-│   ├── tasks/
-│   │   └── celery_tasks.py     # Async processing
-│   ├── requirements.txt
-│   ├── .env.example
-│   └── README.md
-├── frontend/
-│   ├── src/
-│   │   ├── main.jsx
-│   │   ├── App.jsx
-│   │   ├── components/
-│   │   │   ├── UrlInput.jsx
-│   │   │   ├── Results.jsx
-│   │   │   ├── VocabularyList.jsx
-│   │   │   └── SavedWords.jsx
-│   │   ├── hooks/
-│   │   │   └── useAnalyze.js   # React Query hook
-│   │   ├── services/
-│   │   │   └── api.js          # Axios/fetch client
-│   │   └── index.css
-│   ├── package.json
-│   ├── vite.config.js
-│   └── README.md
-├── .gitignore
-├── CLAUDE.md                   # THIS FILE
-└── README.md                   # Project overview
-```
+TO DO AT THE END  (project structure)
 
-
-## Constraints You Accepted
-
-- **Budget:** Minimal token spend (caching, truncation, batching)
-- **Users:** Just you + teacher (no scale needed)
-- **Dependencies:** No third-party NLP libraries (use Claude for all language tasks)
 
 
 **Last updated:** 4th April 2026
