@@ -1,6 +1,6 @@
 # Data Model (Canonical, MVP)
 
-![Data Model](language-content-engine\docs\data\Feature Flag - Page 3.png)
+![Data Model](language-content-engine\docs\data\DataModel.png)
 
 ## 1. Model Overview
 Core entities:
