@@ -52,20 +52,14 @@ Frontend runs on `http://localhost:5173`
 **Frontend:** React 18 | Vite | Tailwind CSS | React Query  
 **Deploy:** Railway/Render (backend) | Vercel (frontend)
 
-## Current Status
-
-- **Week 1 (Days 1-7):** Building backend pipeline (transcript → Claude → vocabulary extraction)
-- **Week 2 (Days 8-14):** Frontend + database
-- **Week 3 (Days 15-21):** Polish + advanced features
-- **Week 4 (Days 22-30):** Deploy + document
 
 ## Learning Goals
 
-This is a 30-day challenge to ship a real product while learning:
-- Prompt engineering (structured outputs, few-shot examples, system vs. user prompts)
-- AI tool mastery (Claude, Cursor, Copilot)
-- Building with AI (cost optimization, error handling, production-ready code)
-- Shipping (deployment, monitoring, documentation)
+This is a challenge to ship a  product while learning:
+- Prompt engineering
+- AI tool mastery 
+- Building with AI 
+- Shipping
 
 See [CLAUDE.md](./CLAUDE.md) for the full technical spec and architecture.
 

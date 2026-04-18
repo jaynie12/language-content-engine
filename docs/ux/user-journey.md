@@ -2,7 +2,7 @@
 ## Journey 1: First-Time User Onboarding
 1. User signs up with email/password.
 2. User logs in and sets target language, current level, interests.
-3. Home feed loads with recommendation filters from preferences.
+3. Home feed loads with recommendation videos from preferences.
 4. User pastes first YouTube URL to start analysis.
 
 
@@ -17,7 +17,6 @@
 3. User sees processing status and can refresh/poll.
 4. On completion, detail page shows CEFR, confidence, topics, vocabulary.
 5. User saves useful words from detail page.
-
 
 ### Exception Paths
 - **E1 Invalid URL**: show validation error immediately; no job created.
@@ -48,7 +47,6 @@
 ### Exception Paths
 - Empty result set returns explanatory empty-state UI.
 - Unknown topic filter values are rejected at API layer.
-
 
 ## Journey 5: Personalized Recommendation Loop
 1. User has preferences + watched history.
