@@ -1,14 +1,14 @@
-# CLAUDE.md — French Learning App System Context
+# Cursor.md — French Learning App System Context
 
 ## Project Overview
 **Name:** French Learning App  
 **Purpose:** Make YouTube French learning passive → active. Users paste a video URL, get AI-extracted vocabulary + difficulty analysis, save words, export to Anki/CSV for spaced repetition.  
-**Stage:** MVP (Days 1-30 April)  
+**Stage:** MVP
 **User:** Solo learner (myself) + French teacher for feedback. Small test group.
 
 ---
 
-## Stack (Locked for April)
+## Stack 
 
 ### Backend
 - **Language:** Python 3.11+
@@ -31,38 +31,10 @@
 - **Frontend:** Vercel
 - **Database:** Railway PostgreSQL
 - **Cache/Queue:** Railway Redis or Upstash
-- **Files:** S3 (for exports, later
+- **Files:** S3 (for exports, later)
 ---
 
 ## Architecture
-
-### API Endpoints
-```
-POST /api/analyze
-  Input: { url: "https://youtube.com/..." }
-  Output: { 
-    video_id, 
-    title, 
-    cefr_level, 
-    confidence,
-    vocabulary: [{ word, translation, cefr, frequency, example_sentence }],
-    topics: [string]
-  }
-
-GET /api/videos
-  Output: List of analyzed videos (paginated)
-
-POST /api/vocabulary/save
-  Input: { video_id, word }
-  Output: { saved: true, user_word_id }
-
-GET /api/vocabulary/saved
-  Output: List of user's saved words
-
-POST /api/vocabulary/export
-  Input: { format: "anki" | "csv" }
-  Output: File download
-```
 
 ### Data Model (PostgreSQL)
 ```
@@ -102,7 +74,7 @@ user_vocabulary
 
 ## Constraints & Design Decisions
 
-### Cost Optimization (Token Budget)
+### Cost Optimization
 - **Problem:** Claude API costs scale with token usage. Transcripts are long.
 - **Solution:**
   1. Cache transcripts in Redis (don't re-fetch)
@@ -146,12 +118,3 @@ user_vocabulary
 - **Errors:** Toast notifications for user feedback (use library like `sonner` or `react-hot-toast`)
 - **API calls:** Wrapped in React Query `useQuery` / `useMutation` hooks
 
-
-## Key Files & Their Roles
-
-TO DO AT THE END  (project structure)
-
-
-
-**Last updated:** 4th April 2026
-**Next review:** 11th April 2025

@@ -35,7 +35,8 @@ class Settings(BaseSettings):
     log_cost_per_request: bool = True
     
     class Config:
-        env_file = ".env"
+        # Support running commands from either backend/ or repo root.
+        env_file = (".env", "../.env")
         case_sensitive = False
 
 

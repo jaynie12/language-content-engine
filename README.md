@@ -27,12 +27,15 @@ Paste a French YouTube video URL. The app:
 
 ### Backend
 ```bash
+# From repo root
 cd backend
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-cp .env.example .env       # Add your ANTHROPIC_API_KEY
+source venv/bin/activate  # Windows PowerShell: venv\Scripts\Activate.ps1
+pip install -r ../requirements.txt
+cp .env.example .env       # Windows PowerShell: copy .env.example .env
 python main.py
+# In a second terminal (from backend/)
+celery -A celery_app.celery_app worker --loglevel=info
 ```
 
 Backend runs on `http://localhost:8000`

@@ -7,15 +7,21 @@ FastAPI backend for French YouTube analysis. Extracts transcripts, analyzes with
 ### 1. Setup
 
 ```bash
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+# Run from repository root:
+# cd language-content-engine
 
-# Install dependencies
+# Create virtual environment
+python -m venv .venv
+source .venv/bin/activate  # Windows PowerShell: .venv\Scripts\Activate.ps1
+
+# Install dependencies from root
 pip install -r requirements.txt
 
+# Enter backend workspace
+cd backend
+
 # Copy .env template and add your API key
-cp .env.example .env
+cp .env.example .env  # Windows PowerShell: copy .env.example .env
 # Edit .env and add your ANTHROPIC_API_KEY
 ```
 
@@ -51,11 +57,15 @@ REDIS_URL=redis://localhost:6379/0
 ### 4. Run the App
 
 ```bash
-# Development server
+# From backend/
+# API server
 python main.py
 
 # Or with uvicorn directly
 uvicorn main:app --reload
+
+# Celery worker (separate terminal)
+celery -A celery_app.celery_app worker --loglevel=info
 
 # Server runs on http://localhost:8000
 ```
@@ -83,7 +93,6 @@ backend/
 │   └── videos.py           # Video history
 ├── tasks/
 │   └── celery_tasks.py     # Async job processing (Day 22+)
-├── requirements.txt
 ├── .env.example
 └── README.md
 ```
@@ -141,7 +150,7 @@ mypy .
 
 ## Environment Variables
 
-See `.env.example`. Key ones:
+See `backend/.env.example`. Key ones:
 
 - `ANTHROPIC_API_KEY` — Your Claude API key (required)
 - `DATABASE_URL` — PostgreSQL connection string
