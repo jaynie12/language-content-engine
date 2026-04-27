@@ -1,6 +1,6 @@
 
 
-# French Learning App
+# French Learning App   [WORK IN PROGRESS]
 
 Making French learning active, not passive.
 
